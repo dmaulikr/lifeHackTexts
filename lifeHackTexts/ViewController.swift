@@ -10,39 +10,77 @@ import UIKit
 import UserNotifications
 
 class ViewController: UIViewController {
+    
+    //Switch for turning on texts
+    @IBOutlet weak var hackSwitch: UISwitch!
+    
+    //Array cointaing daily quotes
+    var hacksArray: [String] = ["helo","dsds"]
+    
+    //Hack main label
+    @IBOutlet weak var hackLbl: UILabel!
+    
+    //Button for setting the time
+    @IBOutlet weak var timeSetBtn: UIButton!
+    @IBOutlet weak var timePicker: UIDatePicker!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //Request Permission
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {(granted, error) in
+    
+    @IBAction func timeSet(_ sender: AnyObject) {
+        timePicker.isHidden = false;
         
+    }
+    
+    
+
+    
+    //Function returning a random number from hacksArray.count without being repeateds
+    var previousNumber: Int?
+    func randomNumber() -> Int {
+        var randomNumber = Int(arc4random_uniform(UInt32(hacksArray.count)))
+        while previousNumber == randomNumber {
+            randomNumber = Int(arc4random_uniform(UInt32(hacksArray.count)))
+        }
+        previousNumber = Int(randomNumber)
+        return randomNumber
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        //Requests permission from user to
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound], completionHandler: {(granted, error) in
             if granted{
                 print("Notification access granted")
+                
             }else{
                 print(error?.localizedDescription)
             }
         
         })
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
-    @IBAction func notifyButtonTapped(sender: UIButton){
-        scheduledNotification(inSeconds: 5, completion: { success in
+    @IBAction func notifySwitchOn(_ sender: UISwitch){
+        let randomIndex: Int = self.randomNumber()
+
+        scheduledNotification(index: randomIndex, inSeconds: 5, completion: { success in
             if success{
                 print("Succesfully scheduled notification")
+                //Updates hack label
+                self.hackLbl.text = self.hacksArray[randomIndex]
+                self.hackLbl.isHidden = false
             }else{
                 print("Error scheduling notifcation")
             }})
         }
     
-    func scheduledNotification(inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
-//    func scheduledNotification(inSeconds: TimeInterval, completion: (Success: Bool) -> ()) {
-        
+    
+    func scheduledNotification(index: Int, inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
+
+        //Notification
         let notif = UNMutableNotificationContent()
-        notif.title = "New Notification"
+        notif.title = "New Hack!"
         notif.subtitle = "These are great"
-        notif.body = "The new notification options in IOS 10 are what I've always dreamed of!"
+        notif.body = self.hacksArray[index]
         
         let notifTrigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
         
@@ -56,13 +94,7 @@ class ViewController: UIViewController {
                 completion(true)
             }
         })
-        
-        
-        
     }
-    
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
