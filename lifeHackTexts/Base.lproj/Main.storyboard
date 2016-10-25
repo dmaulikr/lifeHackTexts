@@ -21,7 +21,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coollogo_com-61591232" translatesAutoresizingMaskIntoConstraints="NO" id="cRf-ra-pzw">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="107" id="pJ1-e0-8LB"/>
+                                    <constraint firstAttribute="height" constant="107" id="lQQ-Dg-TGz"/>
                                 </constraints>
                             </imageView>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="NRd-Vr-Jk1">
@@ -34,11 +34,6 @@
                                     <!--2016-10-11 03:18:52 +0000-->
                                 </date>
                             </datePicker>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hack goes here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ona-IH-gcL">
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhW-Lp-2Ox">
                                 <state key="normal" title="Set Time">
                                     <color key="titleColor" red="0.15294117647058825" green="0.15686274509803921" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
@@ -47,26 +42,41 @@
                                     <action selector="timeSet:" destination="BYZ-38-t0r" eventType="touchUpInside" id="mMg-E7-Ooh"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BWR-MA-40R">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="5b0-Ex-FZw"/>
+                                    <constraint firstAttribute="width" constant="140" id="JSz-FU-ez3"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="8" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ona-IH-gcL">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.95686274509803926" green="0.92156862745098034" blue="0.67450980392156867" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="zhW-Lp-2Ox" firstAttribute="leading" secondItem="cRf-ra-pzw" secondAttribute="leading" id="28H-2F-BKr"/>
-                            <constraint firstItem="cRf-ra-pzw" firstAttribute="centerX" secondItem="7OY-7O-MKb" secondAttribute="centerX" id="4vg-Jp-ZAJ"/>
-                            <constraint firstItem="ona-IH-gcL" firstAttribute="top" secondItem="cRf-ra-pzw" secondAttribute="bottom" constant="37" id="6nQ-9P-QPi"/>
-                            <constraint firstItem="cRf-ra-pzw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="I2s-6U-Q7A"/>
-                            <constraint firstItem="NRd-Vr-Jk1" firstAttribute="top" secondItem="7OY-7O-MKb" secondAttribute="bottom" constant="8" symbolic="YES" id="Jt5-7f-Fi3"/>
-                            <constraint firstItem="zhW-Lp-2Ox" firstAttribute="top" secondItem="7OY-7O-MKb" secondAttribute="top" id="SOm-c3-kxu"/>
-                            <constraint firstItem="7OY-7O-MKb" firstAttribute="centerX" secondItem="NRd-Vr-Jk1" secondAttribute="centerX" id="esN-8S-Pe3"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NRd-Vr-Jk1" secondAttribute="bottom" constant="46" id="hcl-RS-X2j"/>
-                            <constraint firstItem="cRf-ra-pzw" firstAttribute="centerX" secondItem="ona-IH-gcL" secondAttribute="centerX" id="ieA-QG-Ktv"/>
-                            <constraint firstItem="7OY-7O-MKb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="lkV-0l-jRH"/>
-                            <constraint firstAttribute="trailing" secondItem="7OY-7O-MKb" secondAttribute="trailing" id="wCf-nA-TbB"/>
-                            <constraint firstItem="cRf-ra-pzw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="61" id="zQZ-Y9-frc"/>
+                            <constraint firstItem="BWR-MA-40R" firstAttribute="centerX" secondItem="7OY-7O-MKb" secondAttribute="centerX" id="5Ic-2q-ndk"/>
+                            <constraint firstItem="ona-IH-gcL" firstAttribute="leading" secondItem="zhW-Lp-2Ox" secondAttribute="leading" id="Cq6-WQ-f8c"/>
+                            <constraint firstItem="cRf-ra-pzw" firstAttribute="leading" secondItem="ona-IH-gcL" secondAttribute="leading" id="Jtu-47-6YI"/>
+                            <constraint firstItem="cRf-ra-pzw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="QME-RY-JEQ"/>
+                            <constraint firstAttribute="trailing" secondItem="7OY-7O-MKb" secondAttribute="trailing" id="Syo-if-omN"/>
+                            <constraint firstItem="7OY-7O-MKb" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ugc-8o-2lc"/>
+                            <constraint firstItem="cRf-ra-pzw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bnv-1T-w6R"/>
+                            <constraint firstItem="7OY-7O-MKb" firstAttribute="bottom" secondItem="zhW-Lp-2Ox" secondAttribute="bottom" id="dZZ-L0-zCq"/>
+                            <constraint firstItem="7OY-7O-MKb" firstAttribute="centerX" secondItem="NRd-Vr-Jk1" secondAttribute="centerX" id="jxQ-US-VE7"/>
+                            <constraint firstItem="ona-IH-gcL" firstAttribute="top" secondItem="cRf-ra-pzw" secondAttribute="bottom" constant="8" symbolic="YES" id="mYZ-hz-lv7"/>
+                            <constraint firstItem="BWR-MA-40R" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="308" id="n84-JU-Eu2"/>
+                            <constraint firstItem="cRf-ra-pzw" firstAttribute="trailing" secondItem="ona-IH-gcL" secondAttribute="trailing" id="nyo-ni-xnU"/>
+                            <constraint firstItem="NRd-Vr-Jk1" firstAttribute="top" secondItem="7OY-7O-MKb" secondAttribute="bottom" constant="8" symbolic="YES" id="pXL-FQ-JeO"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="NRd-Vr-Jk1" secondAttribute="bottom" constant="46" id="pfA-8A-EiY"/>
+                            <constraint firstItem="cRf-ra-pzw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="wR9-J0-mZ9"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="hackLbl" destination="ona-IH-gcL" id="vG3-d4-XN7"/>
                         <outlet property="hackSwitch" destination="NRd-Vr-Jk1" id="Mkv-dT-EX8"/>
+                        <outlet property="imageIcon" destination="BWR-MA-40R" id="mrc-r4-uic"/>
                         <outlet property="timePicker" destination="7OY-7O-MKb" id="P3z-vX-ZQH"/>
                         <outlet property="timeSetBtn" destination="zhW-Lp-2Ox" id="xsC-sq-C4n"/>
                     </connections>
