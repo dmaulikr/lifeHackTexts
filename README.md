@@ -1,3 +1,3 @@
-# lifeHacksText
+# lifeHackText
 
-![Alt text](https://raw.githubusercontent.com/fsrodriguezm/lifeHacksTexts/master/app.png?raw=true "Optional Title")
+![Alt text](https://raw.githubusercontent.com/fsrodriguezm/lifeHackTexts/master/app.png?raw=true "Optional Title")
