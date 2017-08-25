@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     "People are more likely to return a lost wallet if they find a baby picture inside of it.",
     "Look at someones elbow when you High-Five. You will never miss.",
     "Complete a simple task like making up your bed or preparing a real breakfast when you wake up in the morning. The feeling of even the smallest accomplishment has been proven to make you more productive during the day.",
-    "How to make"+"\"cheating\""+"dice: Set oven to 250, lay on cookie sheet with the number you want to always land face up when rolled, and cook for 10 minutes.",
+    "How to make "+"\"cheating\""+" dice: Set oven to 250, lay on cookie sheet with the number you want to always land face up when rolled, and cook for 10 minutes.",
     "Marrying your best friend eliminates the risk of divorce by over 50%. These marriages are more likely to last a lifetime.",
     "If you're always hungry, you are probably just dehydrated. Drink a glass of water.",
     "Each 5MPH you drive over 60MPH is like paying an additional 10 cents a gallon of gas.",
@@ -73,14 +73,6 @@ class ViewController: UIViewController {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         selectedDate = dateFormatter.string(from: timePicker.date)
-        picked(date: selectedDate!)
-    }
-    
-    func picked(date : String){
-        timePicker.isHidden = true;
-        timeSetBtn.setTitle(date, for: .normal)
-        
-        
     }
     
     
@@ -96,6 +88,7 @@ class ViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+
         
         super.viewDidLoad()
         //Requests permission from user to
@@ -108,6 +101,7 @@ class ViewController: UIViewController {
             }
         
         }
+            
         )
         soundClass.sharedHelper.playBackgroundMusic()
     }
@@ -115,43 +109,29 @@ class ViewController: UIViewController {
     @IBAction func notifySwitchOn(_ sender: UISwitch){
         let randomIndex: Int = self.randomNumber()
         let randomIndex2: Int = self.randomNumber()
-
-        scheduledNotification(index: randomIndex, inSeconds: 5, completion: { success in
-            if success{
-                print("Succesfully scheduled notification")
-                self.updateHacksView(index: randomIndex, index2: randomIndex2)
-                
-            }else{
-                print("Error scheduling notifcation")
-            }})
+        
+        
+        if self.hackSwitch.isOn{
+            scheduledNotification(index: randomIndex, index2: randomIndex2, inSeconds: 5, completion: { success in
+                if success{
+                    print("Succesfully scheduled notification")
+                    
+                }else{
+                    print("Error scheduling notifcation")
+                }})
         }
 
+        }
     
-    
-    func updateHacksView(index: Int, index2: Int){
 
-        //Updates hack label
-        self.hackLbl.isHidden = false
-        self.imageIcon.isHidden = false
-        hackLbl.text = self.hacksArray[index]
-        imageIcon.image = self.imageArray[index2]
+    func scheduledNotification(index: Int, index2: Int, inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
         
-        //Sound
-        
-        targetSound = try? AVAudioPlayer(contentsOf:URL(fileURLWithPath:Bundle.main.path(forResource: "CoolNot", ofType: "wav")! ))
-        targetSound.play()
-
-        
-    }
-    
-    
-    func scheduledNotification(index: Int, inSeconds: TimeInterval, completion: @escaping (_ Success: Bool) -> ()) {
-
         //Notification
         let notif = UNMutableNotificationContent()
         notif.title = "New Hack"
         notif.subtitle = "These are great!"
         notif.body = self.hacksArray[index]
+        self.updateHacksView(index: index, index2: index2)
         
         let notifTrigger = UNTimeIntervalNotificationTrigger(timeInterval: inSeconds, repeats: false)
         
@@ -166,6 +146,27 @@ class ViewController: UIViewController {
             }
         })
     }
+    
+    
+    func updateHacksView(index: Int, index2: Int){
+
+        //Updates hack label
+        self.hackLbl.isHidden = false
+        self.imageIcon.isHidden = false
+        hackLbl.text = self.hacksArray[index]
+        imageIcon.image = self.imageArray[index2]
+        hackLbl.text = self.hacksArray[index]
+        //Sound
+        UIView.animate(withDuration: 3.0,
+                       animations: {self.hackLbl.alpha = 1.0})
+        targetSound = try? AVAudioPlayer(contentsOf:URL(fileURLWithPath:Bundle.main.path(forResource: "CoolNot", ofType: "wav")! ))
+        targetSound.play()
+
+        
+    }
+    
+    
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
